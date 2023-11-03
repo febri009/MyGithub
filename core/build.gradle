@@ -1,33 +1,22 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    //id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
 }
 
 apply from: '../shared_dependencies.gradle'
 
-/*androidExtensions{
-    experimental = true
-}*/
-
 android {
-    compileSdkVersion 33
-    buildToolsVersion "30.0.3"
+    namespace 'com.example.core'
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
+        buildConfigField("String", "KEY", '"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"')
+        buildConfigField("String", "BASE_URL", '"https://api.github.com/"')
     }
 
     buildTypes {
@@ -35,6 +24,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -43,31 +41,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'API_KEY', API_KEY
-        it.buildConfigField 'String', 'BASE_URL', BASE_URL
-    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    //Network
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
-    implementation "com.google.code.gson:gson:$gson_version"
-
-    //Database
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
-    //Coroutine Flow
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    ksp "androidx.room:room-compiler:$room_version"
+    ksp "androidx.room:room-ktx:$room_version"
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
 }

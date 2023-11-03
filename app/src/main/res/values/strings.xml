@@ -1,4 +1,20 @@
 <resources>
-    <string name="app_name">My Github</string>
+    <string name="app_name">My GitHub</string>
+    <string name="usn">Username</string>
+    <string name="insert_favorite">Insert to Favorite</string>
+    <string name="nama">Nama</string>
+    <string name="detail">Profile Details</string>
+    <string name="followers">%d Followers</string>
+    <string name="following">%d Following</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="data_empty">Empty data</string>
+    <string name="search_usn">Search...</string>
     <string name="title_favorite">Favorite</string>
+    <string name="error">Error</string>
+    <string name="switch_theme">Switch Theme</string>
+    <string name="light_theme">Activate Light Mode</string>
+    <string name="dark_theme">Activate Dark Mode</string>
+    <string name="delete_favorite">User has been removed from favorite list</string>
+    <string name="add_favorite">User has been added from favorite list</string>
 </resources>
