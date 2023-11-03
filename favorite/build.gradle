@@ -9,10 +9,10 @@ apply from: '../shared_dependencies.gradle'
 android {
 
     namespace 'com.example.favorite'
-    compileSdkVersion 34
+    compileSdk 34
     
     defaultConfig {
-        minSdkVersion 21
+        minSdk 24
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -7,16 +7,14 @@ apply from: '../shared_dependencies.gradle'
 
 android {
     namespace 'com.example.mygithub'
-    compileSdkVersion 34
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.mygithub"
-        minSdkVersion 21
-        targetSdkVersion 34
+        minSdk 24
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-
-        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,6 +37,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    lintOptions{
+        disable 'VectorPath'
     }
     dynamicFeatures = [':favorite']
 }
